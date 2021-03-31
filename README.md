@@ -2,6 +2,53 @@
 
 functional component에서도 state를 사용할 수 있다!
 
+## useState(initialState)
+
+```jsx
+import { useState } from "react";
+
+const [value, setValue] = useState(0);
+```
+
+`value`는 state이고, 이를 변경하기 위해선 반드시 `setValue` 함수를 통해야 한다.
+
+## useEffect(callbackFunc, deps)
+
+```jsx
+import { useEffect } from "react";
+
+function foo() {
+  console.log("Component did mount!");
+}
+
+useEffect(foo);
+```
+
+`componentDidMount`와 같은 역할을 한다. `deps`를 추가하여 해당 state가 변할 때만 `componentDidUpdate`가 실행될 수 있도록 한다.
+
+```jsx
+import { useState, useEffect } from "react";
+
+const [value, setValue] = useState(0);
+
+function foo() {
+  console.log("Component did mount!");
+  console.log("Component did update!");
+}
+
+useEffect(foo, [value]);
+
+setValue(1); // state update!
+```
+
+`deps`를 비워두면 `componentDidMount`만 실행된다.
+
+```jsx
+useEffect(() => {
+  console.log("Component did mount!");
+}, []);
+```
+
 ## useInput(initial, validator?)
 
 [source](./src/nooks/useInput.js)
@@ -21,7 +68,7 @@ function App() {
 
 2번째 인자는 validator를 추가하여 유효한 값만 입력되도록 설정할 수 있다.
 
-## useTabs
+## useTabs(initial, tabs)
 
 [source](./src/nooks/useTabs.js)
 
@@ -38,7 +85,7 @@ const content = [
 ];
 
 function App() {
-  const tabs = useTaps(0, content);
+  const tabs = useTabs(0, content);
   return (
     <div className="App">
       {content.map((section, index) => (
@@ -53,3 +100,22 @@ function App() {
 ```
 
 hook을 이용해 간편하게 tab을 구현하였다.
+
+## useTitle(initial)
+
+[source](./src/nooks/useTitle.js)
+
+```jsx
+function App() {
+  const updateTitle = useTitle("Loading...");
+  useEffect(() => {
+    async function foo() {
+      const { title } = await bar();
+      updateTitle(title);
+    }
+    foo();
+  }, [...]);
+}
+```
+
+비동기 작업에 따라 title이 변경될 필요가 있을 때 사용할 수 있다.
