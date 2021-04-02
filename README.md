@@ -49,6 +49,29 @@ useEffect(() => {
 }, []);
 ```
 
+함수를 `return`하면 그 함수는 `componentWillUnmount`와 동일한 역할을 한다.
+
+```jsx
+useEffect(() => {
+  return () => {
+    console.log("Component will unmount!");
+  }
+});
+```
+
+## useRef()
+
+```jsx
+import { useRef } from "react";
+
+const inputRef = useRef();
+setTimeout(() => inputRef.current.focus(), 5000);
+
+<input ref={inputRef} />
+```
+
+`inputRef.current`가 `input` 태그를 참조하고 있다. 위 코드는 5초 후 `input` 태그를 포커싱한다.
+
 ## useInput(initial, validator?)
 
 [source](./src/nooks/useInput.js)
@@ -119,3 +142,22 @@ function App() {
 ```
 
 비동기 작업에 따라 title이 변경될 필요가 있을 때 사용할 수 있다.
+
+## useClick(onClick)
+
+[source](./src/nooks/useClick.js)
+
+```js
+function App() {
+  const title = useClick(() => {
+    console.log("Title clicked!");
+  });
+  return (
+    <div className="App">
+      <h1 ref={title}>Hello</h1>
+    </div>
+  );
+}
+```
+
+`h1` 태그가 선택되면 `useClick`의 콜백함수가 실행된다.
