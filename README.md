@@ -147,7 +147,7 @@ function App() {
 
 [source](./src/nooks/useClick.js)
 
-```js
+```jsx
 function App() {
   const title = useClick(() => {
     console.log("Title clicked!");
@@ -161,3 +161,22 @@ function App() {
 ```
 
 `h1` 태그가 선택되면 `useClick`의 콜백함수가 실행된다.
+
+## useHover(onHover)
+
+[source](./src/nooks/useHover.js)
+
+```jsx
+function App() {
+  const title = useHover(() => {
+    console.log("Mouse hovered!");
+  });
+  return (
+    <div className="App">
+      <h1 ref={title}>Hello</h1>
+    </div>
+  );
+}
+```
+
+`h1` 태그에 마우스가 올라가면 `useHover`의 콜백함수가 실행된다.
