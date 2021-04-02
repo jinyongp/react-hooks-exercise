@@ -180,3 +180,20 @@ function App() {
 ```
 
 `h1` 태그에 마우스가 올라가면 `useHover`의 콜백함수가 실행된다.
+
+## useConfirm(message, onConfirm, onCancel?)
+
+```jsx
+function App() {
+  const confirmAction = useConfirm("Are you sure?", () => {
+    console.log("Deleting the world...");
+  });
+  return (
+    <div className="App">
+      <button onClick={confirmAction}>Delete the world?</button>
+    </div>
+  );
+}
+```
+
+browser에서 `confirm` 여부를 확인하고 `onConfirm` 혹은 `onCancel` 함수를 실행한다.
