@@ -219,3 +219,20 @@ function App() {
 ```
 
 `Protected` 버튼을 클릭하면 페이지를 나가거나 새로고침할 때 여부를 재차 확인한다. `Unprotected` 버튼을 클릭하면 여부 확인을 취소한다.
+
+## useBeforeLeave(onLeave)
+
+[source](./src/nooks/useBeforeLeave.js)
+
+```jsx
+function App() {
+  useBeforeLeave(() => console.log("mouse leave..."));
+  return (
+    <div className="App">
+      <h1>Hello</h1>
+    </div>
+  );
+}
+```
+
+마우스가 브라우저를 벗어날 때 발생하는 이벤트를 추가할 수 있다.
