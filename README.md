@@ -183,6 +183,8 @@ function App() {
 
 ## useConfirm(message, onConfirm, onCancel?)
 
+[source](./src/nooks/useConfirm.js)
+
 ```jsx
 function App() {
   const confirmAction = useConfirm("Are you sure?", () => {
@@ -197,3 +199,23 @@ function App() {
 ```
 
 browser에서 `confirm` 여부를 확인하고 `onConfirm` 혹은 `onCancel` 함수를 실행한다.
+
+## usePreventLeave()
+
+[source](./src/nooks/usePreventLeave.js)
+
+[reference](https://developer.mozilla.org/ko/docs/Web/API/Window/beforeunload_event)(beforeunload)
+
+```jsx
+function App() {
+  const { enablePrevent, disablePrevent } = usePreventLeave();
+  return (
+    <div className="App">
+      <button onClick={enablePrevent}>Protected</button>
+      <button onClick={disablePrevent}>Unprotected</button>
+    </div>
+  );
+}
+```
+
+`Protected` 버튼을 클릭하면 페이지를 나가거나 새로고침할 때 여부를 재차 확인한다. `Unprotected` 버튼을 클릭하면 여부 확인을 취소한다.
