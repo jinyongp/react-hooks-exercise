@@ -236,3 +236,26 @@ function App() {
 ```
 
 마우스가 브라우저를 벗어날 때 발생하는 이벤트를 추가할 수 있다.
+
+## useFadeIn({ duration?, timingFunction?, delay? })
+
+[source](./src/nooks/useFadeIn.js)
+
+```jsx
+function App() {
+  const h1FadeIn = useFadeIn({ duration: 1.5, timingFunction: "ease-in-out" });
+  const pFadeIn = useFadeIn({ delay: 1, duration: 2 });
+  return (
+    <div className="App">
+      <h1 {...h1FadeIn}>Hello</h1>
+      <p {...pFadeIn}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam de isto
+        magna dissensio est. Sed quae tandem ista ratio est? Si verbum sequimur,
+      </p>
+    </div>
+  );
+}
+```
+
+`useFadeIn`은 `{ duration = 1, timingFunction = "ease", delay = 0 }`을 기본 매개변수로 가진다.
+변경하고자 하는 속성을 인자에서 설정하면 된다.
