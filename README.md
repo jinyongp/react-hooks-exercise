@@ -344,3 +344,29 @@ function App() {
 ```
 
 `button`을 클릭하면 알림이 전송된다. 브라우저의 `Notification`이 `Allow`여야만 한다.
+
+## useAxios(url, axiosInstance?)
+
+[source](./src/nooks/useAxios.js)
+
+[axios reference](https://xn--xy1bk56a.run/axios/guide/)
+
+```jsx
+function App() {
+  const [{ loading, data, error }, refetch] = useAxios(
+    "https://yts-proxy.now.sh/list_movies.json"
+  );
+  return (
+    <div className="App">
+      <h2>{data?.status} {data?.statusText}</h2>
+      <h4>{loading && "Loading..."}</h4>
+      {console.log(data)}
+      {error && console.error(error)}
+      <button onClick={refetch}>Refetch</button>
+    </div>
+  );
+}
+```
+
+`axios` 요청을 수행하여 `loading`, `data`, `error` 상태 관리를 한다. `refetch` 함수를 통해 재요청을 할 수 있다.
+원하는 http 요청을 위해 `axiosInstance`를 별도로 포함할 수 있다.
