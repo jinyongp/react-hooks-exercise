@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export const useHover = (onHover) => {
+const useHover = (onHover) => {
   const ref = useRef();
   useEffect(() => {
     ref.current?.addEventListener("mouseenter", onHover);
@@ -8,3 +8,5 @@ export const useHover = (onHover) => {
   }, []);
   return ref;
 };
+
+export default useHover;

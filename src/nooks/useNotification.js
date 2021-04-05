@@ -1,4 +1,4 @@
-export const useNotification = (title, options) => {
+const useNotification = (title, options) => {
   // if (!(Notification in window)) return;
   return async () => {
     if (Notification.permission !== "granted") {
@@ -8,3 +8,5 @@ export const useNotification = (title, options) => {
     new Notification(title, options);
   };
 };
+
+export default useNotification;

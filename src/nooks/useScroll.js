@@ -13,7 +13,7 @@ const throttle = (func, wait) => {
   };
 };
 
-export const useScroll = () => {
+const useScroll = () => {
   const [scroll, setScroll] = useState({ scrollX: 0, scrollY: 0 });
   const listener = () => {
     const { scrollX, scrollY } = window;
@@ -25,3 +25,5 @@ export const useScroll = () => {
   }, []);
   return scroll;
 };
+
+export default useScroll;

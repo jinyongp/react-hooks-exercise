@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export const useFullscreen = (callback) => {
+const useFullscreen = (callback) => {
   const ref = useRef();
   const listener = () => callback?.(document.fullscreenElement);
   useEffect(() => {
@@ -22,3 +22,5 @@ export const useFullscreen = (callback) => {
   };
   return { ref, enterFullscreen, exitFullscreen };
 };
+
+export default useFullscreen;

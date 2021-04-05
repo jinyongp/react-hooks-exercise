@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const useAxios = (url, axiosInstance = axios) => {
+const useAxios = (url, axiosInstance = axios) => {
   const [trigger, setTrigger] = useState(0);
   const [state, setState] = useState({
     loading: true,
@@ -24,3 +24,5 @@ export const useAxios = (url, axiosInstance = axios) => {
   }, [trigger]);
   return [state, refetch];
 };
+
+export default useAxios;
