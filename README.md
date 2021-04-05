@@ -1,8 +1,28 @@
-# React Hooks
+# React Hooks <!-- omit in toc -->
 
 functional component에서도 state를 사용할 수 있다!
 
-## useState(initialState)
+## Table of Contents <!-- omit in toc -->
+
+- [useState(initialState)](#usestateinitialstate)
+- [useEffect(callbackFunc, deps)](#useeffectcallbackfunc-deps)
+- [useRef()](#useref)
+- [useInput(initial, validator?)](#useinputinitial-validator)
+- [useTabs(initial, tabs)](#usetabsinitial-tabs)
+- [useTitle(initial)](#usetitleinitial)
+- [useClick(onClick)](#useclickonclick)
+- [useHover(onHover)](#usehoveronhover)
+- [useConfirm(message, onConfirm, onCancel?)](#useconfirmmessage-onconfirm-oncancel)
+- [usePreventLeave()](#usepreventleave)
+- [useBeforeLeave(onLeave)](#usebeforeleaveonleave)
+- [useFadeIn({ duration?, timingFunction?, delay? })](#usefadein-duration-timingfunction-delay-)
+- [useNetwork(omChange)](#usenetworkomchange)
+- [useScroll()](#usescroll)
+- [useFullscreen()](#usefullscreen)
+- [useNotification](#usenotification)
+- [useAxios(url, axiosInstance?)](#useaxiosurl-axiosinstance)
+
+### useState(initialState)
 
 ```jsx
 import { useState } from "react";
@@ -12,7 +32,7 @@ const [value, setValue] = useState(0);
 
 `value`는 state이고, 이를 변경하기 위해선 반드시 `setValue` 함수를 통해야 한다.
 
-## useEffect(callbackFunc, deps)
+### useEffect(callbackFunc, deps)
 
 ```jsx
 import { useEffect } from "react";
@@ -59,7 +79,7 @@ useEffect(() => {
 });
 ```
 
-## useRef()
+### useRef()
 
 ```jsx
 import { useRef } from "react";
@@ -72,7 +92,7 @@ setTimeout(() => inputRef.current.focus(), 5000);
 
 `inputRef.current`가 `input` 태그를 참조하고 있다. 위 코드는 5초 후 `input` 태그를 포커싱한다.
 
-## useInput(initial, validator?)
+### useInput(initial, validator?)
 
 [source](./src/nooks/useInput.js)
 
@@ -91,7 +111,7 @@ function App() {
 
 2번째 인자는 validator를 추가하여 유효한 값만 입력되도록 설정할 수 있다.
 
-## useTabs(initial, tabs)
+### useTabs(initial, tabs)
 
 [source](./src/nooks/useTabs.js)
 
@@ -124,7 +144,7 @@ function App() {
 
 hook을 이용해 간편하게 tab을 구현하였다.
 
-## useTitle(initial)
+### useTitle(initial)
 
 [source](./src/nooks/useTitle.js)
 
@@ -143,7 +163,7 @@ function App() {
 
 비동기 작업에 따라 title이 변경될 필요가 있을 때 사용할 수 있다.
 
-## useClick(onClick)
+### useClick(onClick)
 
 [source](./src/nooks/useClick.js)
 
@@ -162,7 +182,7 @@ function App() {
 
 `h1` 태그가 선택되면 `useClick`의 콜백함수가 실행된다.
 
-## useHover(onHover)
+### useHover(onHover)
 
 [source](./src/nooks/useHover.js)
 
@@ -181,7 +201,7 @@ function App() {
 
 `h1` 태그에 마우스가 올라가면 `useHover`의 콜백함수가 실행된다.
 
-## useConfirm(message, onConfirm, onCancel?)
+### useConfirm(message, onConfirm, onCancel?)
 
 [source](./src/nooks/useConfirm.js)
 
@@ -200,7 +220,7 @@ function App() {
 
 browser에서 `confirm` 여부를 확인하고 `onConfirm` 혹은 `onCancel` 함수를 실행한다.
 
-## usePreventLeave()
+### usePreventLeave()
 
 [source](./src/nooks/usePreventLeave.js)
 
@@ -220,7 +240,7 @@ function App() {
 
 `Protected` 버튼을 클릭하면 페이지를 나가거나 새로고침할 때 여부를 재차 확인한다. `Unprotected` 버튼을 클릭하면 여부 확인을 취소한다.
 
-## useBeforeLeave(onLeave)
+### useBeforeLeave(onLeave)
 
 [source](./src/nooks/useBeforeLeave.js)
 
@@ -237,7 +257,7 @@ function App() {
 
 마우스가 브라우저를 벗어날 때 발생하는 이벤트를 추가할 수 있다.
 
-## useFadeIn({ duration?, timingFunction?, delay? })
+### useFadeIn({ duration?, timingFunction?, delay? })
 
 [source](./src/nooks/useFadeIn.js)
 
@@ -260,7 +280,7 @@ function App() {
 `useFadeIn`은 `{ duration = 1, timingFunction = "ease", delay = 0 }`을 기본 매개변수로 가진다.
 변경하고자 하는 속성을 인자에서 설정하면 된다.
 
-## useNetwork(omChange)
+### useNetwork(omChange)
 
 [source](./src/nooks/useNetwork.js)
 
@@ -283,7 +303,7 @@ function App() {
 
 인터넷 연결 여부를 확인하여, 연결되었을 경우 `true`, 연결되지 않았을 경우 `false`로 설정된다. 인터넷 연결이 끊기거나 연결될 때 콜백함수를 실행하거나 `status`를 얻을 수 있다.
 
-## useScroll()
+### useScroll()
 
 [source](./src/nooks/useScroll.js)
 
@@ -302,7 +322,7 @@ function App() {
 
 `scrollY`가 500 이상일 때 스타일이 변경된다.
 
-## useFullscreen()
+### useFullscreen()
 
 [source](./src/nooks/useFullscreen.js)
 
@@ -326,7 +346,7 @@ function App() {
 
 이미지를 클릭하면 전체화면으로 전환된다. 전체화면을 나가기 위해 `esc`를 누르거나 `exitFullscreen` 함수를 `useFullscreen()`으로부터 얻어 호출해야 한다. 인자에 `callback` 함수를 추가하여 전체화면에 진입하고 나올 때 동작을 정의할 수 있다.
 
-## useNotification
+### useNotification
 
 [source](./src/nooks/useNotification.js)
 
@@ -345,7 +365,7 @@ function App() {
 
 `button`을 클릭하면 알림이 전송된다. 브라우저의 `Notification`이 `Allow`여야만 한다.
 
-## useAxios(url, axiosInstance?)
+### useAxios(url, axiosInstance?)
 
 [source](./src/nooks/useAxios.js)
 
