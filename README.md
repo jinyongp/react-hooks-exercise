@@ -259,3 +259,26 @@ function App() {
 
 `useFadeIn`은 `{ duration = 1, timingFunction = "ease", delay = 0 }`을 기본 매개변수로 가진다.
 변경하고자 하는 속성을 인자에서 설정하면 된다.
+
+## useNetwork(omChange)
+
+[source](./src/nooks/useNetwork.js)
+
+```jsx
+function App() {
+  const status = useNetwork((online) => {
+    if (online) {
+      // ...stuff to do while online.
+    } else {
+      // ...stuff to do while offline.
+    }
+  });
+  return (
+    <div className="App">
+      <h1>{status ? "Online" : "Offline"}</h1>
+    </div>
+  );
+}
+```
+
+인터넷 연결 여부를 확인하여, 연결되었을 경우 `true`, 연결되지 않았을 경우 `false`로 설정된다. 인터넷 연결이 끊기거나 연결될 때 콜백함수를 실행하거나 `status`를 얻을 수 있다.
