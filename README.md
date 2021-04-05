@@ -301,3 +301,25 @@ function App() {
 ```
 
 `scrollY`가 500 이상일 때 스타일이 변경된다.
+
+## useFullscreen()
+
+[source](./src/nooks/useFullscreen.js)
+
+```jsx
+function App() {
+  const { ref, enterFullscreen } = useFullscreen();
+  return (
+    <div className="App">
+      <img
+        ref={ref}
+        src="https://picsum.photos/800/600"
+        onClick={enterFullscreen}
+        alt="picsum"
+      />
+    </div>
+  );
+}
+```
+
+이미지를 클릭하면 전체화면으로 전환된다. 전체화면을 나가기 위해 `esc`를 누르거나 `exitFullscreen` 함수를 `useFullscreen()`으로부터 얻어 호출해야 한다.
