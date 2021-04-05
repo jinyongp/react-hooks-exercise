@@ -282,3 +282,22 @@ function App() {
 ```
 
 인터넷 연결 여부를 확인하여, 연결되었을 경우 `true`, 연결되지 않았을 경우 `false`로 설정된다. 인터넷 연결이 끊기거나 연결될 때 콜백함수를 실행하거나 `status`를 얻을 수 있다.
+
+## useScroll()
+
+[source](./src/nooks/useScroll.js)
+
+```jsx
+function App() {
+  const { scrollY } = useScroll();
+  return (
+    <div className="App" style={{ height: "1000vh" }}>
+      <h1 style={{ position: "fixed", color: scrollY > 500 && "red" }}>
+        Hello
+      </h1>
+    </div>
+  );
+}
+```
+
+`scrollY`가 500 이상일 때 스타일이 변경된다.
