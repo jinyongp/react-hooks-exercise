@@ -325,3 +325,22 @@ function App() {
 ```
 
 이미지를 클릭하면 전체화면으로 전환된다. 전체화면을 나가기 위해 `esc`를 누르거나 `exitFullscreen` 함수를 `useFullscreen()`으로부터 얻어 호출해야 한다. 인자에 `callback` 함수를 추가하여 전체화면에 진입하고 나올 때 동작을 정의할 수 있다.
+
+## useNotification
+
+[source](./src/nooks/useNotification.js)
+
+[Notification API](https://developer.mozilla.org/ko/docs/Web/API/notification)
+
+```jsx
+function App() {
+  const notify = useNotification("Alert", { body: "This is alert." });
+  return (
+    <div className="App">
+      <button onClick={notify}>Notification</button>
+    </div>
+  );
+}
+```
+
+`button`을 클릭하면 알림이 전송된다. 브라우저의 `Notification`이 `Allow`여야만 한다.
