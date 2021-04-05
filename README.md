@@ -308,18 +308,20 @@ function App() {
 
 ```jsx
 function App() {
-  const { ref, enterFullscreen } = useFullscreen();
+  const { ref, enterFullscreen } = useFullscreen((fullscreenElement) => {
+    console.log(fullscreenElement ? "Entered fullscreen mode!" : "Exited fullscreen mode!");
+  });
   return (
     <div className="App">
       <img
-        ref={ref}
         src="https://picsum.photos/800/600"
-        onClick={enterFullscreen}
         alt="picsum"
+        ref={ref}
+        onClick={enterFullscreen}
       />
     </div>
   );
 }
 ```
 
-이미지를 클릭하면 전체화면으로 전환된다. 전체화면을 나가기 위해 `esc`를 누르거나 `exitFullscreen` 함수를 `useFullscreen()`으로부터 얻어 호출해야 한다.
+이미지를 클릭하면 전체화면으로 전환된다. 전체화면을 나가기 위해 `esc`를 누르거나 `exitFullscreen` 함수를 `useFullscreen()`으로부터 얻어 호출해야 한다. 인자에 `callback` 함수를 추가하여 전체화면에 진입하고 나올 때 동작을 정의할 수 있다.

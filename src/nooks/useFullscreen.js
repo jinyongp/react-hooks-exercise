@@ -1,8 +1,24 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
-export const useFullscreen = () => {
+export const useFullscreen = (callback) => {
   const ref = useRef();
-  const enterFullscreen = () => ref.current?.requestFullscreen();
-  const exitFullscreen = () => document.exitFullscreen();
+  const listener = () => callback?.(document.fullscreenElement);
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", listener);
+    return () => document.removeEventListener("fullscreenchange", listener);
+  }, []);
+  const enterFullscreen = () => {
+    ref.current?.requestFullscreen?.() ||
+      ref.current?.mozRequestFullscreen?.() ||
+      ref.current?.webkitRequestFullscreen?.() ||
+      ref.current?.msRequestFullscreen?.();
+  };
+  const exitFullscreen = () => {
+    document.fullscreenElement &&
+      (document.exitFullscreen?.() ||
+        document.mozExitFullscreen?.() ||
+        document.webKitExitFullscreen?.() ||
+        document.msExitFullscreen?.());
+  };
   return { ref, enterFullscreen, exitFullscreen };
 };
